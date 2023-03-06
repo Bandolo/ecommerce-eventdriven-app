@@ -1,6 +1,6 @@
 name: Deploy master branch
 
-- name: 'Create env file'
+name: 'Create env file'
   run: |
     echo "${{ secrets.ENV_FILE }}" > .env
 
