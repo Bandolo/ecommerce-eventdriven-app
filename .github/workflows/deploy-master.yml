@@ -10,12 +10,12 @@ jobs:
     name: deploy
     runs-on: ubuntu-latest
     env:
-      warehouseApiKey: a4137cf1-ef2f-4946-991a-8dd6a2253902
+      warehouseApiKey: "a4137cf1-ef2f-4946-991a-8dd6a2253902"
       orderpackedApiKeys:
-        warehouse1: d3e6c8d8-86bb-4ed7-b5d8-acd928effd7e
-        warehouse2: d5c95d65-c2fa-4859-9361-ea7a52af8e88
+        warehouse1: "d3e6c8d8-86bb-4ed7-b5d8-acd928effd7e"
+        warehouse2: "d5c95d65-c2fa-4859-9361-ea7a52af8e88"
       orderdeliveredApiKeys: 
-        dhl: 3a82cc3c-2310-446d-ba8c-d716c3d90a27
+        dhl: "3a82cc3c-2310-446d-ba8c-d716c3d90a27"
 
     strategy:
       matrix:
