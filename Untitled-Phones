@@ -1,0 +1,13 @@
+{
+  "id": "43eec676-3001-4628-b24c-63791c0530a6",
+  "PK": "phones",
+  "sk": "smart#iphone#unused#43eec676-3001-4628-b24c-63791c0530a6",
+  "title": "Iphone 13 - Brand New ",
+  "company": "Apple",
+  "description": "Phone with highly valuable functionalities",
+  "storage": "64GB",
+  "colorPreference": [
+    {"colorCode": 1,"displayValue": "black"},
+    {"colorCode": 2,"displayValue": "silver"}
+  ]
+}

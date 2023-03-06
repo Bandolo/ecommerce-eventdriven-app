@@ -1,0 +1,77 @@
+// import axios from 'axios';
+// import {dynamodbItem,} from 'sls-jest';
+
+// jest.setTimeout(120000);
+
+// const endpointCreateOrder = 'https://8rmgymuaz0.execute-api.us-east-1.amazonaws.com/dev/orders'
+// const tokenCreateOrder = 'eyJraWQiOiJmbDcwK0kyUjlFeUFKdzlvRWZSWUtUZUNDSDUwM2ZsTHlPUVA3TEZlQSs0PSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiI3NjQzMjE2NS0xZmY1LTRhMTUtOTg4NC0xMTRlNDY2NmVlMzYiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfZVpWaDZLaWl4IiwiY29nbml0bzp1c2VybmFtZSI6Ijc2NDMyMTY1LTFmZjUtNGExNS05ODg0LTExNGU0NjY2ZWUzNiIsIm9yaWdpbl9qdGkiOiI4YzM0OTVmMS1mMzM0LTQxNmItOGNiYS1kNWRiYzMxOThjNzEiLCJhdWQiOiI3Z3VzdGJxa2g4MXJ2M25rcG5wN3Exc2hpbSIsImV2ZW50X2lkIjoiMTVmOWM1OWQtYTNiMC00MDAxLWJhODctN2NiYjhhMWU3MGI5IiwidG9rZW5fdXNlIjoiaWQiLCJhdXRoX3RpbWUiOjE2NzY5NjQ1MzAsImV4cCI6MTY3NzU4ODQ4MSwiaWF0IjoxNjc3NTg0ODgxLCJqdGkiOiI1NDE0NzhmOC1jMDAxLTQxY2YtOGFhZS0wODBmZDBhMmUwY2YiLCJlbWFpbCI6IjIzNy5zdHJlZXRAZ21haWwuY29tIn0.P48NUNv8-WleWRYQG2I4WOTTUFQkKWFNMe5rjrJzMjNH8L7TnJOQidnT2WFgLsZwmAou2xllkUjRnNbXBjNU5aWF25lp-W7Yw3jz5A4vGSHMkphA4FHiHHV_mSwE49Jk1HvuqLht1NbAuxfQD4iE9P-u7qG5bxtiYc3xEieghxBy7aBR2xJovu8CEePEU7UTbkt-IhXLFvvkiHYOoOTRwoW9R2Kb5fUN_JgLsqrY-RHD-_tVIG6Ftx_CRFVy7aOz2QYMLXHgHKAGHdgUbDwXDTE-hHPxrmXw204Xxv5dfUFXNrcFwmVWzeWh8stCL6bnLLi6yBTC7kngVCqBuBQjog'
+// const payloadCreateOrder = {
+//   "items":[
+//       {
+//           "id":"fb4c44e8-077f-43a0-8271-2d165269c2a1",
+//           "count":2,
+//           "color":1
+//       }
+//   ]
+// }
+
+
+// let orderId: string | undefined
+
+// beforeAll(async () => {
+//   const response = await axios.post(endpointCreateOrder, payloadCreateOrder, {headers: {Authorization: tokenCreateOrder}});
+//   orderId = response.data.orderId
+
+
+// })
+
+
+// describe('Cart', () => {
+//   it('order should exist in the orders dynamodb table', async () => {
+//     await expect(
+//       dynamodbItem({
+//         tableName: 'dev-ecom-app-orders-table',
+//         key: {
+//           id: orderId,
+//         },
+//       })
+//     ).toExist()
+//   });
+
+//   it('order status should change from "placed" to "packed" when calling "/orderpacked"', async () => {
+    
+//     const endpointPackOrder = `https://8rmgymuaz0.execute-api.us-east-1.amazonaws.com/dev/orderpacked/${orderId}`
+//     const apiKeyPackOrder = "d3e6c8d8-86bb-4ed7-b5d8-acd928effd7e"
+
+//     await axios.post(endpointPackOrder, {}, {headers: {Authorization: apiKeyPackOrder}});
+    
+
+//     await expect(
+//       dynamodbItem({
+//         tableName: 'dev-ecom-app-orders-table',
+//         key: {
+//           id: orderId,
+//         },
+//       })
+//     ).toExistAndMatchObject({"status": "packed"})
+//   }),
+
+//   it('order status should change from "packed" to "delivered" when calling "/orderdelivered"', async () => {
+
+//     const endpointDeliverOrder = `https://8rmgymuaz0.execute-api.us-east-1.amazonaws.com/dev/orderdelivered/${orderId}`
+//     const apiKeyDeliverOrder = "3a82cc3c-2310-446d-ba8c-d716c3d90a27"
+
+//     await axios.post(endpointDeliverOrder, {}, {headers: {Authorization: apiKeyDeliverOrder}});
+    
+
+//     await expect(
+//       dynamodbItem({
+//         tableName: 'dev-ecom-app-orders-table',
+//         key: {
+//           id: orderId,
+//         },
+//       })
+//     ).toExistAndMatchObject({"status": "delivered"})
+//   })
+
+// })
