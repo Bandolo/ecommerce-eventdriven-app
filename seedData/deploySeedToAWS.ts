@@ -12,7 +12,7 @@ const saveToDynamo = async ({ data, tableName }: { data: any[]; tableName: strin
   
 
   const profile = {
-    dev: 'serverlessDev',
+    dev: 'default',
     int: 'int-serverlessUser',
     preprod: 'preprod-serverlessUser', 
     prod: 'prod-serverlessUser',
