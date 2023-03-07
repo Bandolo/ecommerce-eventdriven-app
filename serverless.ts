@@ -17,12 +17,12 @@ const serverlessConfiguration: AWS = {
       itemTable: '${sls:stage}-${self:service}-item-table',
       ordersTable: '${sls:stage}-${self:service}-orders-table',
     },
-    profile: {
-      dev: 'serverlessDev',
-      int: 'int-profile',
-      preprod: 'preprod-profile',
-      prod: 'prod-profile',
-    },
+    // profile: {
+    //   dev: 'serverlessDev',
+    //   int: 'int-profile',
+    //   preprod: 'preprod-profile',
+    //   prod: 'prod-profile',
+    // },
     eventBridgeBusName: 'ordersEventBus',
 
     esbuild: {
