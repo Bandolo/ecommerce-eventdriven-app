@@ -76,7 +76,7 @@ describe('Cart', () => {
           id: orderId,
         },
       })
-    ).toExistAndMatchObject({"status": "packed"})
+    ).toExistAndMatchObject({"status": "Packed"})
   }),
 
   it('order status should change from "packed" to "delivered" when calling "/orderdelivered"', async () => {
