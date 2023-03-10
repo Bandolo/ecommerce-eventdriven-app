@@ -32,8 +32,8 @@ jobs:
     #   run: |
     #     aws configure set aws_access_key_id $secrets.AWS_ACCESS_KEY_ID --profile serverlessDev
     #     aws configure set aws_secret_access_key $secrets.AWS_SECRET_ACCESS_KEY --profile serverlessDev
-    # - name: Run unit tests
-    #   run: npm test
+    - name: Run unit tests
+      run: npm run test:integration
     # - name: Install Plugin and Deploy
     #   uses: serverless/github-action@v3.1
     #   with:
@@ -54,7 +54,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
     - name: Run integration tests
-      run: npm test
+      run: npm run test:integration
 
 
 

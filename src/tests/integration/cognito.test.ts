@@ -2,7 +2,7 @@ import { CognitoIdentityProviderClientConfig } from '@aws-sdk/client-cognito-ide
 import axios from 'axios';
 import {dynamodbItem,} from 'sls-jest';
 jest.setTimeout(120000);
-import {cognitoSignIn} from '../../src/libs/cognitoToken'
+import {cognitoSignIn} from '../../libs/cognitoToken'
 // import Secrets from '../../src/libs/secrets';
 
 
@@ -76,7 +76,7 @@ describe('Cart', () => {
           id: orderId,
         },
       })
-    ).toExistAndMatchObject({"status": "Packed"})
+    ).toExistAndMatchObject({"status": "packed"})
   }),
 
   it('order status should change from "packed" to "delivered" when calling "/orderdelivered"', async () => {

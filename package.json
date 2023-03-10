@@ -4,8 +4,10 @@
   "description": "Serverless aws-nodejs-typescript template",
   "main": "serverless.ts",
   "scripts": {
-    "test": "jest"
+    "test:unit": "jest src/tests/unit",
+    "test:integration": "jest src/tests/integration --runInBand"
   },
+
   "engines": {
     "node": ">=14.15.0"
   },
