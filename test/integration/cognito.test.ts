@@ -1,3 +1,4 @@
+import { CognitoIdentityProviderClientConfig } from '@aws-sdk/client-cognito-identity-provider';
 import axios from 'axios';
 import {dynamodbItem,} from 'sls-jest';
 jest.setTimeout(120000);
@@ -7,11 +8,16 @@ import {cognitoSignIn} from '../../src/libs/cognitoToken'
 
 let tokenSignin: string | undefined
 
+const config: CognitoIdentityProviderClientConfig = {
+  region: 'us-east-1'
+}
+
 const params = {
   clientId: '7jt5murnq8pkj78f0umbppc4o',
   userPoolId: 'us-east-1_6dixx9FLR',
   username: "84988f8c-f45a-4727-a00d-df0ffc2b36a7",
-  password: 'Cognitosman'
+  password: 'Cognitosman',
+  config,
 }
 
 
