@@ -4,7 +4,7 @@ permissions:
   id-token: write # required to use OIDC authentication
   contents: read # required to checkout the code from the repo
 
-on
+on:
   push:
     branches:
       - master
@@ -37,7 +37,7 @@ jobs:
     - name: Run unit tests
       run: npm run test:unit
     - name: Serverless deploy
-      run: sls deploy --profile serverlessD
+      run: sls deploy --profile serverlessDev
     # - name: Deploy to AWS
     #   uses: serverless/github-action@v3.1
     #   with:
