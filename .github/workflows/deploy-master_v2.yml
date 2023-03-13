@@ -1,0 +1,58 @@
+name: Deploy master branch
+
+permissions:
+  id-token: write # required to use OIDC authentication
+  contents: read # required to checkout the code from the repo
+
+on
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    name: deploy
+    environment: actions
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+    - uses: actions/checkout@v3
+    - name: 'Create env file'
+      run: |
+        echo "${{ secrets.env }}" >> .env
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: arn:aws:iam::609738416112:role/Github-actions-OIDC-access
+        role-duration-seconds: 900 # the ttl of the session, in seconds.
+        aws-region: us-east-1 # use your region here.
+    - name: Run unit tests
+      run: npm run test:unit
+    - name: Deploy to AWS
+      uses: serverless/github-action@v3.1
+      with:
+        args: deploy
+      # env:
+      #   # AWS_PROFILE: serverlessDev
+      #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    # - name: Configure AWS Credentials
+    #   uses: aws-actions/configure-aws-credentials@v2
+    #   with:
+    #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+    #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+    #     aws-region: us-east-1
+    - name: Run integration tests
+      run: npm run test:integration
+
+
+
+        
