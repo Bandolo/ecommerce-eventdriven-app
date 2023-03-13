@@ -18,7 +18,7 @@ const serverlessConfiguration: AWS = {
       ordersTable: '${sls:stage}-${self:service}-orders-table',
     },
     profile: {
-      dev: 'serverlessDev',
+      dev: 'default',
       int: 'int-profile',
       preprod: 'preprod-profile',
       prod: 'prod-profile',
