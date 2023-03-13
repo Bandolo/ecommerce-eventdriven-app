@@ -37,7 +37,7 @@ jobs:
     - name: Run unit tests
       run: npm run test:unit
     - name: Serverless deploy
-      run: sls deploy --stage dev
+      run: sls deploy --profile default
     # - name: Deploy to AWS
     #   uses: serverless/github-action@v3.1
     #   with:
