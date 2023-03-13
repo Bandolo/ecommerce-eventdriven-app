@@ -36,12 +36,12 @@ jobs:
         aws-region: us-east-1 # use your region here.
     - name: Run unit tests
       run: npm run test:unit
-    - name: Serverless deploy
-      run: serverless deploy 
-    # - name: Deploy to AWS
-    #   uses: serverless/github-action@v3.1
-    #   with:
-    #     args: deploy
+    # - name: Serverless deploy
+    #   run: serverless deploy 
+    - name: Deploy to AWS
+      uses: serverless/github-action@v3.1
+      with:
+        args: deploy
       # env:
       #   # AWS_PROFILE: serverlessDev
       #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
