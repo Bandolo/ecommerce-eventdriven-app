@@ -23,7 +23,7 @@ const serverlessConfiguration: AWS = {
     //   preprod: 'preprod-profile',
     //   prod: 'prod-profile',
     // },
-    // eventBridgeBusName: 'ordersEventBus',
+    eventBridgeBusName: 'ordersEventBus',
 
     esbuild: {
       bundle: true,
