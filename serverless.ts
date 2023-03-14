@@ -24,6 +24,8 @@ const serverlessConfiguration: AWS = {
     //   prod: 'prod-profile',
     // },
     eventBridgeBusName: 'ordersEventBus',
+    UserPoolId: { Ref: 'CognitoUserPool' },
+    PoolClientId: { Ref: 'CognitoUserPoolClient' },
 
     esbuild: {
       bundle: true,
@@ -51,8 +53,8 @@ const serverlessConfiguration: AWS = {
       ordersTable: '${self:custom.tables.ordersTable}',
       region: '${self:provider.region}',
       eventBridgeBusName: '${self:custom.eventBridgeBusName}',
-      UserPoolId: { Ref: 'CognitoUserPool' },
-      PoolClientId: { Ref: 'CognitoUserPoolClient' },
+      UserPoolId: '${self:custom.UserPoolId}',
+      PoolClientId: '${self:custom.PoolClientId}'
     },
     iamRoleStatements: [
       {
@@ -89,13 +91,13 @@ const serverlessConfiguration: AWS = {
         },
       },
       UserPoolId: {
-        Value: { Ref: 'CognitoUserPool' },
+        Value: '${self:custom.UserPoolId}',
         Export: {
           Name: 'UserPoolId',
         },
       },
       ClientId: {
-        Value: { Ref: 'CognitoUserPoolClient' },
+        Value: '${self:custom.PoolClientId}',
         Export: {
           Name: 'ClientId',
         },
