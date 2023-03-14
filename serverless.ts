@@ -17,13 +17,13 @@ const serverlessConfiguration: AWS = {
       itemTable: '${sls:stage}-${self:service}-item-table',
       ordersTable: '${sls:stage}-${self:service}-orders-table',
     },
-    profile: {
-      dev: 'serverlessDev',
-      int: 'int-profile',
-      preprod: 'preprod-profile',
-      prod: 'prod-profile',
-    },
-    eventBridgeBusName: 'ordersEventBus',
+    // profile: {
+    //   dev: 'serverlessDev',
+    //   int: 'int-profile',
+    //   preprod: 'preprod-profile',
+    //   prod: 'prod-profile',
+    // },
+    // eventBridgeBusName: 'ordersEventBus',
 
     esbuild: {
       bundle: true,
@@ -39,7 +39,7 @@ const serverlessConfiguration: AWS = {
   provider: {
     name: 'aws',
     runtime: 'nodejs16.x',
-    profile: '${self:custom.profile.${sls:stage}}',
+    // profile: '${self:custom.profile.${sls:stage}}',
     region: 'us-east-1',
     apiGateway: {
       minimumCompressionSize: 1024,
