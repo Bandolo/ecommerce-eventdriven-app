@@ -32,7 +32,7 @@ const SecretsConfig: AWS['resources']['Resources'] = {
     Properties: {
       Description: 'Cognito Username passed to get access token',
       Name: 'cognitoUserName',
-      SecretString: '${env:orderdeliveredApiKeys}',
+      SecretString: '${env:cognitoUserName}',
     },
 
   }
