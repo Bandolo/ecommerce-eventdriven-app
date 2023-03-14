@@ -11,7 +11,7 @@ const POOLCLIENTID = process.env.PoolClientId
 let USERNAME: string | undefined
 
 beforeAll(async () => {
-  const response = await Secrets.getSecret('CognitoUserName') 
+  const response = await Secrets.getSecret('cognitoUserName') 
   
   USERNAME = response
   console.log(USERNAME)
