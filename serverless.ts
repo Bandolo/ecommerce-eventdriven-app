@@ -51,6 +51,8 @@ const serverlessConfiguration: AWS = {
       ordersTable: '${self:custom.tables.ordersTable}',
       region: '${self:provider.region}',
       eventBridgeBusName: '${self:custom.eventBridgeBusName}',
+      UserPoolId: { Ref: 'CognitoUserPool' },
+      PoolClientId: { Ref: 'CognitoUserPoolClient' },
     },
     iamRoleStatements: [
       {

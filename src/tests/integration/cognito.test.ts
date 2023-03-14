@@ -3,8 +3,19 @@ import axios from 'axios';
 import {dynamodbItem,} from 'sls-jest';
 jest.setTimeout(120000);
 import {cognitoSignIn} from '../../libs/cognitoToken'
-// import Secrets from '../../src/libs/secrets';
+import Secrets from '../../libs/secrets'
 
+const USERPOOLID = process.env.UserPoolId
+const POOLCLIENTID = process.env.PoolClientId
+
+let USERNAME: string | undefined
+
+beforeAll(async () => {
+  const response = await Secrets.getSecret('CognitoUserName') 
+  
+  USERNAME = response
+  console.log(USERNAME)
+  })
 
 let tokenSignin: string | undefined
 
@@ -12,10 +23,18 @@ const config: CognitoIdentityProviderClientConfig = {
   region: 'us-east-1'
 }
 
+// const params = {
+//   clientId: '7jt5murnq8pkj78f0umbppc4o',
+//   userPoolId: 'us-east-1_6dixx9FLR',
+//   username: "84988f8c-f45a-4727-a00d-df0ffc2b36a7",
+//   password: 'Cognitosman',
+//   config,
+// }
+
 const params = {
-  clientId: '7jt5murnq8pkj78f0umbppc4o',
-  userPoolId: 'us-east-1_6dixx9FLR',
-  username: "84988f8c-f45a-4727-a00d-df0ffc2b36a7",
+  clientId: POOLCLIENTID,
+  userPoolId: USERPOOLID,
+  username: USERNAME,
   password: 'Cognitosman',
   config,
 }
@@ -29,7 +48,7 @@ console.log(tokenSignin)
 })
 
 
-const endpointCreateOrder = 'https://5sjj467qy9.execute-api.us-east-1.amazonaws.com/dev/orders'
+const endpointCreateOrder = 'https://pachwcadw4.execute-api.us-east-1.amazonaws.com/dev/orders'
 const payloadCreateOrder = {
   "items":[
       {
@@ -63,7 +82,7 @@ describe('Cart', () => {
 
     it('order status should change from "placed" to "packed" when calling "/orderpacked"', async () => {
     
-    const endpointPackOrder = `https://5sjj467qy9.execute-api.us-east-1.amazonaws.com/dev/orderpacked/${orderId}`
+    const endpointPackOrder = `https://pachwcadw4.execute-api.us-east-1.amazonaws.com/dev/orderpacked/${orderId}`
     const apiKeyPackOrder = "d3e6c8d8-86bb-4ed7-b5d8-acd928effd7e"
 
     await axios.post(endpointPackOrder, {}, {headers: {Authorization: apiKeyPackOrder}});
@@ -81,7 +100,7 @@ describe('Cart', () => {
 
   it('order status should change from "packed" to "delivered" when calling "/orderdelivered"', async () => {
 
-    const endpointDeliverOrder = `https://5sjj467qy9.execute-api.us-east-1.amazonaws.com/dev/orderdelivered/${orderId}`
+    const endpointDeliverOrder = `https://pachwcadw4.execute-api.us-east-1.amazonaws.com//dev/orderdelivered/${orderId}`
     const apiKeyDeliverOrder = "3a82cc3c-2310-446d-ba8c-d716c3d90a27"
 
     await axios.post(endpointDeliverOrder, {}, {headers: {Authorization: apiKeyDeliverOrder}});

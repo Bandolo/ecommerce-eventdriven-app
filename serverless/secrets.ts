@@ -26,6 +26,16 @@ const SecretsConfig: AWS['resources']['Resources'] = {
       SecretString: '${env:orderdeliveredApiKeys}',
     },
   },
+
+  cognitoUserName: {
+    Type: 'AWS::SecretsManager::Secret',
+    Properties: {
+      Description: 'Cognito Username passed to get access token',
+      Name: 'cognitoUserName',
+      SecretString: '${env:orderdeliveredApiKeys}',
+    },
+
+  }
 };
 
 export default SecretsConfig;
